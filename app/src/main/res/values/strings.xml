@@ -7,4 +7,8 @@
     <string name="contacts_title">Contacts</string>
     <string name="contacts_starred">Starred</string>
     <string name="contacts_all">All</string>
+    <string name="main_title">Let\'s get started</string>
+    <string name="main_description">Paste your first link into\nthe field to shorten it</string>
+    <string name="main_shorten_btn">SHORTEN IT!</string>
+    <string name="main_shorten_hint">Shorten a link here …</string>
 </resources>
