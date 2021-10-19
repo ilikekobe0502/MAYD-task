@@ -17,7 +17,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField "String", "API_HOST", '"https://51ab3c19-6483-4cd8-81d2-ece629815aa2.mock.pstmn.io/"'
+        buildConfigField "String", "API_HOST", '"https://api.shrtco.de/v2/"'
 //        ndk {
 //            abiFilters "armeabi-v7a", "arm64-v8a"
 //        }
