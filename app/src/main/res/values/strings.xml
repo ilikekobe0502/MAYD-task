@@ -2,13 +2,16 @@
     <string name="app_name">MAYD homework[Neo]</string>
 
     <string name="data_empty">Contacts is empty</string>
-    <string name="retry">Please Retry</string>
+    <string name="unexpected_error">unexpected error</string>
     <string name="press_again_exit">Press again to exit App</string>
-    <string name="contacts_title">Contacts</string>
-    <string name="contacts_starred">Starred</string>
-    <string name="contacts_all">All</string>
+
+
     <string name="main_title">Let\'s get started</string>
     <string name="main_description">Paste your first link into\nthe field to shorten it</string>
     <string name="main_shorten_btn">SHORTEN IT!</string>
     <string name="main_shorten_hint">Shorten a link here …</string>
+    <string name="main_shorten_empty_error_hint">Please add a link here</string>
+    <string name="main_item_copy">COPY</string>
+    <string name="main_item_copied">COPIED!</string>
+    <string name="main_history_title">Your Link History</string>
 </resources>

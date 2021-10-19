@@ -15,15 +15,28 @@
         app:constraint_referenced_ids="logo_iv,center_image_iv,
         title_tv,description_tv" />
 
+    <TextView
+        android:id="@+id/history_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_x3"
+        android:text="@string/main_history_title"
+        android:textColor="@color/very_dark_violet"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/history_rv"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginHorizontal="@dimen/margin_x3"
+        android:layout_marginTop="@dimen/margin_x3"
         app:layout_constraintBottom_toTopOf="@id/bottom_bg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/item_contact" />
+        app:layout_constraintTop_toBottomOf="@id/history_title_tv"
+        tools:listitem="@layout/item_history" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/logo_iv"
@@ -88,14 +101,15 @@
         app:layout_constraintTop_toTopOf="@id/bottom_bg" />
 
     <EditText
-        android:id="@+id/link_et"
+        android:id="@+id/url_et"
         android:layout_width="0dp"
-        android:layout_height="@dimen/bottom_item_height"
+        android:layout_height="@dimen/normal_item_height"
         android:layout_marginHorizontal="@dimen/margin_x5"
         android:layout_marginBottom="@dimen/margin_x1"
         android:background="@drawable/bg_rectangle_white"
         android:gravity="center"
         android:hint="@string/main_shorten_hint"
+        android:textColorHint="@color/gray"
         app:layout_constraintBottom_toTopOf="@id/shorten_tv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -105,15 +119,15 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/shorten_tv"
         android:layout_width="0dp"
-        android:layout_height="@dimen/bottom_item_height"
+        android:layout_height="@dimen/normal_item_height"
         android:layout_marginTop="@dimen/margin_x1"
         android:background="@drawable/bg_rectangle_cyan"
         android:gravity="center"
         android:text="@string/main_shorten_btn"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/link_et"
-        app:layout_constraintStart_toStartOf="@id/link_et"
-        app:layout_constraintTop_toBottomOf="@id/link_et" />
+        app:layout_constraintEnd_toEndOf="@id/url_et"
+        app:layout_constraintStart_toStartOf="@id/url_et"
+        app:layout_constraintTop_toBottomOf="@id/url_et" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

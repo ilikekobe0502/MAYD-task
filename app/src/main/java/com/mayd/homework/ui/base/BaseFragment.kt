@@ -37,18 +37,18 @@ abstract class BaseFragment : Fragment() {
     abstract fun getLayoutId(): Int
 
     fun navigateTo(fragment: Fragment) {
-        val transaction = requireActivity().supportFragmentManager.beginTransaction()
-        if (!this.isHidden) {
-            transaction.hide(this)
-            transaction.setCustomAnimations(
-                    R.anim.enter_from_right,
-                    R.anim.exit_to_left,
-                    R.anim.enter_from_left,
-                    R.anim.exit_to_right
-            )
-            transaction.addToBackStack(this.tag)
-        }
-        transaction.add(R.id.layout_fragment, fragment, fragment.tag).commit()
+//        val transaction = requireActivity().supportFragmentManager.beginTransaction()
+//        if (!this.isHidden) {
+//            transaction.hide(this)
+//            transaction.setCustomAnimations(
+//                    R.anim.enter_from_right,
+//                    R.anim.exit_to_left,
+//                    R.anim.enter_from_left,
+//                    R.anim.exit_to_right
+//            )
+//            transaction.addToBackStack(this.tag)
+//        }
+//        transaction.add(R.id.layout_fragment, fragment, fragment.tag).commit()
     }
 
     open fun onBackPressed() {
