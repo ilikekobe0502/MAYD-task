@@ -27,7 +27,9 @@ class MainActivity : BaseActivity() {
      */
     private val contactsFuncListener by lazy {
         HistoryFunListener(
-            onCopyClick = { _ -> },
+            onCopyClick = { data ->
+                GeneralUtils.copyToClipboard(data.fullShortLink)
+            },
             onDeleteClick = { _ ->
             }
         )
@@ -75,6 +77,7 @@ class MainActivity : BaseActivity() {
 
         shorten_tv.setOnClickListener {
             viewModel.getShorten(url_et.text.toString())
+            GeneralUtils.hideKeyboard(this)
         }
     }
 
