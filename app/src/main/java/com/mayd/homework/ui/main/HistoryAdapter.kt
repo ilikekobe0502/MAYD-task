@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.mayd.homework.R
 import com.mayd.homework.model.api.model.response.Shorten
@@ -12,10 +14,8 @@ import kotlinx.android.synthetic.main.item_history.view.*
 
 class HistoryAdapter(
     private val funListener: HistoryFunListener
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-    private var data: ArrayList<Shorten> = ArrayList()
-    private var latestCopiedPosition: Int = -1
+) : ListAdapter<Shorten, RecyclerView.ViewHolder>(DiffCallback()) {
+    private var latestCopiedCode: String = ""
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -24,13 +24,13 @@ class HistoryAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val item = data[position]
+        val item = getItem(position)
 
         holder.itemView.apply {
             original_url_tv.text = item.originalLink
             shorten_url_tv.text = item.fullShortLink
             copy_tv.apply {
-                if (latestCopiedPosition == position) {
+                if (latestCopiedCode == item.code) {
                     background = ContextCompat.getDrawable(context, R.drawable.bg_rectangle_violet)
                     text = context.getString(R.string.main_item_copied)
                 } else {
@@ -43,25 +43,21 @@ class HistoryAdapter(
                 funListener.onDeleteClick(item)
             }
             copy_tv.setOnClickListener {
+                latestCopiedCode = item.code
                 funListener.onCopyClick(item)
-                latestCopiedPosition = position
-                notifyItemChanged(position)
             }
         }
     }
 
-    override fun getItemCount(): Int {
-        return data.size
-    }
-
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {}
 
-    fun updateData(data: List<Shorten>) {
-        this.data.apply {
-            clear()
-            addAll(data)
+    private class DiffCallback : DiffUtil.ItemCallback<Shorten>() {
+        override fun areItemsTheSame(oldItem: Shorten, newItem: Shorten): Boolean {
+            return oldItem.code == newItem.code
         }
 
-        notifyDataSetChanged()
+        override fun areContentsTheSame(oldItem: Shorten, newItem: Shorten): Boolean {
+            return oldItem == newItem
+        }
     }
 }

@@ -29,6 +29,7 @@ class MainActivity : BaseActivity() {
         HistoryFunListener(
             onCopyClick = { data ->
                 GeneralUtils.copyToClipboard(data.fullShortLink)
+                adapter?.notifyDataSetChanged()
             },
             onDeleteClick = { data ->
                 viewModel.deleteItem(data)
@@ -86,7 +87,7 @@ class MainActivity : BaseActivity() {
     override fun setObserve() {
         viewModel.getHistoryResult.observe(this) {
             switchUiMode(it.isNotEmpty())
-            adapter?.updateData(it)
+            adapter?.submitList(it)
         }
 
         viewModel.createShortenResult.observe(this) {
