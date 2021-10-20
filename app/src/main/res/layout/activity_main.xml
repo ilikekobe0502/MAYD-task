@@ -15,11 +15,19 @@
         app:constraint_referenced_ids="logo_iv,center_image_iv,
         title_tv,description_tv" />
 
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/history_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="history_title_tv,history_rv" />
+
     <TextView
         android:id="@+id/history_title_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_x3"
+        android:fontFamily="@font/poppins_regular"
         android:text="@string/main_history_title"
         android:textColor="@color/very_dark_violet"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,8 +73,11 @@
         android:id="@+id/title_tv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
         android:gravity="center"
         android:text="@string/main_title"
+        android:textColor="@color/very_dark_violet"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@id/description_tv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,8 +88,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_x5"
+        android:fontFamily="@font/poppins_regular"
         android:gravity="center"
         android:text="@string/main_description"
+        android:textColor="@color/very_dark_violet"
         app:layout_constraintBottom_toTopOf="@id/bottom_bg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -107,8 +120,12 @@
         android:layout_marginHorizontal="@dimen/margin_x5"
         android:layout_marginBottom="@dimen/margin_x1"
         android:background="@drawable/bg_rectangle_white"
+        android:fontFamily="@font/poppins_regular"
         android:gravity="center"
         android:hint="@string/main_shorten_hint"
+        android:inputType="textUri"
+        android:maxLines="1"
+        android:textColor="@color/very_dark_violet"
         android:textColorHint="@color/gray"
         app:layout_constraintBottom_toTopOf="@id/shorten_tv"
         app:layout_constraintEnd_toEndOf="parent"
@@ -122,12 +139,26 @@
         android:layout_height="@dimen/normal_item_height"
         android:layout_marginTop="@dimen/margin_x1"
         android:background="@drawable/bg_rectangle_cyan"
+        android:fontFamily="@font/poppins_semibold"
         android:gravity="center"
         android:text="@string/main_shorten_btn"
         android:textColor="@color/white"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/url_et"
         app:layout_constraintStart_toStartOf="@id/url_et"
         app:layout_constraintTop_toBottomOf="@id/url_et" />
+
+
+    <ProgressBar
+        android:id="@+id/loading_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:theme="@style/progressBarBlue"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/bottom_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/bottom_bg" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

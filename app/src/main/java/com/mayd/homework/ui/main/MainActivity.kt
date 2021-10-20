@@ -79,8 +79,9 @@ class MainActivity : BaseActivity() {
         })
 
         shorten_tv.setOnClickListener {
-            viewModel.getShorten(url_et.text.toString())
+            loading_view.visibility = View.VISIBLE
             GeneralUtils.hideKeyboard(this)
+            viewModel.getShorten(url_et.text.toString())    
         }
     }
 
@@ -93,14 +94,18 @@ class MainActivity : BaseActivity() {
         viewModel.createShortenResult.observe(this) {
             when (it) {
                 is ApiResult.Loading -> {
-                    url_et.text.clear()
+                    shorten_tv.isEnabled = false
                 }
                 is ApiResult.Loaded -> {
+                    loading_view.visibility = View.GONE
+                    shorten_tv.isEnabled = true
+                    url_et.text.clear()
                 }
                 is ApiResult.Success -> {
                     viewModel.getHistory()
                 }
                 is ApiResult.Error -> {
+                    loading_view.visibility = View.GONE
                     if (it.throwable.message == TAG_EMPTY_INPUT) {
                         switchInputUi(true)
                     } else {
@@ -121,10 +126,10 @@ class MainActivity : BaseActivity() {
 
         if (hasHistory) {
             main_group.visibility = View.GONE
-            history_rv.visibility = View.VISIBLE
+            history_group.visibility = View.VISIBLE
         } else {
             main_group.visibility = View.VISIBLE
-            history_rv.visibility = View.GONE
+            history_group.visibility = View.GONE
         }
     }
 
