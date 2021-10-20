@@ -10,5 +10,8 @@ interface ShortenDao {
     fun getAll(): Flow<List<Shorten>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertItem(contacts: Shorten)
+    fun insertItem(shorten: Shorten)
+
+    @Delete
+    fun deleteItem(shorten: Shorten)
 }

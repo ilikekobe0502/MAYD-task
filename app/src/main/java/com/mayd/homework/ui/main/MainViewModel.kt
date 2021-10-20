@@ -9,6 +9,7 @@ import com.mayd.homework.model.api.model.response.Shorten
 import com.mayd.homework.model.repository.MaydDbRepository
 import com.mayd.homework.model.repository.MaydRepository
 import com.mayd.homework.ui.base.BaseViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onCompletion
@@ -60,4 +61,12 @@ class MainViewModel@ViewModelInject constructor(
         }
     }
 
+    /**
+     * delete shorten item from db
+     */
+    fun deleteItem(shorten: Shorten){
+        viewModelScope.launch(Dispatchers.IO) {
+            maydDbRepository.deleteShortenData(shorten)
+        }
+    }
 }

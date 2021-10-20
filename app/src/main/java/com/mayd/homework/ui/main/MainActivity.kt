@@ -30,7 +30,9 @@ class MainActivity : BaseActivity() {
             onCopyClick = { data ->
                 GeneralUtils.copyToClipboard(data.fullShortLink)
             },
-            onDeleteClick = { _ ->
+            onDeleteClick = { data ->
+                viewModel.deleteItem(data)
+                viewModel.getHistory()
             }
         )
     }
